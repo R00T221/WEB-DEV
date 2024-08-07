@@ -1,0 +1,145 @@
+/* PARALLA EFFECT IS CREATED WHEN WE HAVE 2 DIFFERENT CONTENTS PLACED ON Z-AXIS AS 2 DIFFERENT DISTANCE WITH FOREGROUND CONTENT CLOSER TO ORIGI OF Z-AXIS(USER) AND BACKGROUND CONTENT FAR AWAY FROM ORIGIN OF Z-AXIS.THE EFFECTC IS VISIBLE WHEN SCROLLED BECOX THE CONTENT CLOSER TO ORIGIN SCROLLS FASTER THAN THE CONTENT IN BACKGROUND.
+LINK TO CHECK PARALLAX WEBSITE IS: https://codehelp-parallax-website.netlify.app/ */
+/* USING UNIVERSAL SELECTOR TO SET MARGIN,PADDING AND BOX -SIZING BECOX DEFAULT MARGIN IS 16PX AND WE DON'T WANTY ANY DEFAULT MARGIN.
+*********NOTE**********
+ALWAYS SET THESE 3 PROPERTIES WHEN CODING,IT IS A GOOD PRACTICE */
+*{
+    margin: 0;
+    padding: 0;
+    /* box-sizing is set to border box becox the margin or padding etc should not be effected,but if there is any space complexity,border-box ensures that size of content is increased/decreased but no the size of container. */
+    box-sizing: border-box;
+    /* USING EXTERNAL FONT */
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+/* styling wrapper */
+#wrapper{
+    /* SINCE WRAPPER CONTAINS ALL CODE OF THE WEBSITE,SO WE ARE GIVING IT THE FULL HEIGHT OF VIEWPORT */
+    height: 100vh;
+    /* we want scrolling along y-axis but not along x-axis so  */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* SINCE WE ARE PLACING BACKGROUND AND FOREGROUND IMAGES ON EACH OTHER(overlap) AT DISTINCT DISTANCES ON Z-AXIS,THUS WE NEED TO WORK ON Z-AXIS.THUS WE ENABLE THE PERSPECTIVE WHICH GIVES US THE DISTANCE FROM ORIGIN OF Z-AXIS TO THE USER */
+    perspective: 10px;
+}
+/* styling container */
+.container{
+    /* AS WE WANT TO OVERLAP THE 2 IMAGES WHICH IS ONLY POSSIBLE WHEN THEIR POSITION IS SET TO ABSOLUTE AND ABSOLUTE POSITION WORKS WHEN THEIR NEAREST PARENT IS SET TO NON-STATIC.SINCE CONTAINER IS THE NEAREST PARENT OF THE 2 IMAGES,SO SETTING CONTAINER TO NON-STATIC(RELATIVE) POSITION SO THAT IMAGES POSITION CAN BE SET TO ABSOLUTE */
+    position: relative;
+    /* HEIGHT OF THIS CONTAINER IS FULL VIEWPORT HEIGHT,SO SETTING HEIGHT TO 100% OF IT'S PARENT CONTAINE WHOSE HEIGHT IS 100VH */
+    height: 100%;
+    /* AS THE HEADING 'ADVENTURE' IS AT THE CENTER OF THIS CONTAINER,SO MAKING THIS CONTAINER A FLEX BOX SO THAT USING 'JUSTIFY-CONTENT' AND ;ALIGN-ITEMS' WE CAN BRING THE HEADING TO THE CENTER */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* TILL NOW THE ELEMENTS WILL COME ALONG THE MAIN AXIS BECOX OF FLEX,SINCE SCROLLING ALONG X-AXIS IS HIDDEN,THUS WE CAN'T SEE THE HEADING AS OF NOW. */
+    /* ********************************** */
+    /* USING TRANSFORM-STYLE SO THAT ALL THE CHILD ELEMENTS(background-img,foreground-img,heading) PRESERVE THEIR 3D SYTLING IF THEY HAVE ANY */
+    transform-style: preserve-3d;
+    /* WE NEED TO USE Z-INDEX IN NEGATIVE HERE BECOX IF WE LOOK AT THE WEBSITE,THE 2ND SECTION OVERLAPS THE CONTAINER WHEN SCROLLED.THIS HAPPENS BECOX 3D TRANSFORMATIONS USE STACK LAYERS WHICH CREATESA DISTURBANCE IN THE ELEMENT FLOW */
+    z-index: -1;
+}
+/* styling images */
+.background,.foreground{
+    /* setting position to absolute so that they overlap,clearly when they overlap they will take the entire width of the container becox no width/height is explicitly set for images.Also when absolute position is set to both images,their actual position is taken by another element(heading) and thus we now get 3 layers on top of each other.At bottom layer we now have heading,then we have background image and at top layer we have foreground image*/
+    position: absolute;
+    /* setting width and height of the images so that whole images come within container */
+    width: 100%;
+    height: 100%;
+    /* since the images look a stretched bit so using object-fit to maintain aspect ratio of images.Using value 'cover' becox image will not be resized but clipped to fit */
+    object-fit: cover;
+     /*SINCE WE WANT HEADING LAYER AT THE TOP,SO W ARE USING Z-INDEX WITH NEGATIVE VALUE FOR IMAGES,SO THAT THESE IMAGES GO TO BOTTOM LAYERS AND HEADING COMES AS TOP LAYER.WE CAN ALSO USE Z-INDEX WITH POSITIVE VALUE IN HEADING SO THAT IT COMES AT TOP  */
+     z-index: -1;
+}
+/* NOW WE HAVE TO PLACE BACKGROUND IMAGE ON Z-AXIS AT SOME DISTANCE BUT FAR FROM THE ORIGIN USING TRANSFORM PROPRETY.
+******************NOTE*******************
+WHEN WE TRANSLATE THE BACKGROUND PICTURE TO NEGATIVE VALUE ON Z-AXIS,IT AUTOMATICALLY PLACES THE FOREGROUND PICTURE AT TOP LAYER BECOX FOREGROUND PIC AND HEADING ARE  AT ORIGIN AND SINCE FOREGROUND PIC IS MORE TRANSPARENT,YHUS WE ARE ABLE TO SEE HEADING AS WELL.IF THE FOREGROUND PIC IS NOT TRANSPARENT THEN WE NEED TO SHIFT FOREGROUND PIC TO -VE DIREN ON Z-AXIS AS WELL SO THAT HEADING BECOMES TOP LAYER. THUS SHIFTING BACKGROUND IMAGE BEYOND ORIGIN MAKES IT VISIBLE,SO IF Z-INDEX ON BACKGROUND IMAGE AND FOREGROUND IMAGE WOULD NOT BE USED,HEADING WILL STILL COME AT TOP BY TRANSLATING THE BACKGROUND  AND FOREGROUND IMAGE TO -VE VALUE ALONG Z-AXIS */
+.background{
+    /* negative value takes it away from the origin(user) on z-axis and +ve value take it closer to origin(user) */
+    /* as the background image is placed far from user,it looks small,keeping it's position fixed we need ti scale it so that it fits upto th viewport.Thus position remains far from user but it is scaled to look larger*/
+    transform: translateZ(-40px) scale(6);
+}
+/* NOW ON SCROLLING WE SEE THE FOREGROUND IMAGE MOVES TOO FAST THAN BACKGROUND IMAGE BUT WE NEED TO MOVE A LITTLE SLOWER THAN IT IS.SO WE WILL MOVE FOREGROUND IMAGE A LITTLE FAR FROM ORIGIN ON Z-AXIS SO THAT IT DOESN'T SCROLL THIS FAST.SINCE IT MOVED FAR FROM USER IT WILL ALSO LOOK SMALL,SO SCALING IT A BIT */
+.foreground{
+    /* ****************NOTE*********** */
+    /* IF FOREGROOUND IMAGE WOULD NOT BE MOSTLY TRANSPARENT,WE STILL WOOULD HAVE NEEDED IT TO TRANSLATE ALONG Z-AXIS TO AMKE HEADING VISIBLE IN CASE Z-INDEX ON IMAGES IN NOT USED */
+    transform: translateZ(-20px) scale(2.97);
+
+}
+/* STYLING HEADING */
+.hdg{
+    /* setting the position absolute to place it exactly as shown on website I:E SO THAT WE CAN MOVE IT AROUND.ALSO WE NEED TO SET IT ABSOLUTE BECOX WE WANT THIS LAYER AT THE TOP*/
+    position: absolute;
+    top: 5rem;
+    /* left: 50%; */
+    font-size: 10rem;
+    letter-spacing: 4px;
+    color: white;
+    /* in text shadow we give no horizontol shadow or vertical shadow but shadow radius is 10px with color having no red,green or blue content but having opacity of 0.3 */
+    text-shadow: 0 0 10px rgba(0, 0,0,0.3);
+    font-weight: 600;   
+}
+ 
+/* STYLING SECTION */
+section{
+    background-color: rgb(45, 45, 45);
+    color: white;
+    padding: 5rem 0;
+}
+/* styling 2nd heading 'adventure time'
+ */
+ .secHDG{
+    font-size: 5rem;
+    padding: 0 10rem;
+ }
+/* STYLING TEXT */
+.text{
+    font-size: 1.5rem;
+    padding: 0 10rem;
+    margin: 5rem 0;
+}
+/* STYLING BACKGROUND IMAGES USING 'bg' CLASS */
+
+.bg{
+    /* AS THE HEADINGS LIKE SURFING,BIKING ETC APPEAR ON TOP OF THE IMAGE,MEANS THAT POSITION OF THE HEADINGS MUST BE ABSOLUTE AND FOR THAT THEIR NEAREST ANCESTOR MUST BE OF NON STATIC POSITION AND AS DIV OF CLASS (bg) IS THE NEAREST ANCESTOR OF EVERY HEADING,SO SETTING IT'S POSITION AS RELATIVE.
+    ALSO WE NEED THE POSITIONS OF THE HEADINGS ABSOLUTE SO THAT WE CAN MOVE THEM AROUND */
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    /* TO KEEP THE BACKGROUND IMAGE FIXED SO THAT THE CONTENT CAN FLOW OVER IT WHEN SCROLLING,WE HAVE A PROPERTY CALLED 'background-attachment' */
+    background-attachment: fixed;
+    /* using background -position property so that aspect ratio of background picture is maintained */
+    background-size: cover;
+    /* using background position property to center the background attachment */
+    background-position: center;
+
+}
+/* adding background image in bg1 */
+.bg1{
+    background-image: url(/assets/sport-1.jpg);
+}
+/* adding background image in bg2 class */
+.bg2{
+    background-image: url(/assets/sport-2.jpg);
+}
+/* adding background image in bg3 class */
+.bg3{
+    background-image: url(/assets/sport-3.jpg);
+}
+/* styling headings in section tag except the ist heading */
+.desc{
+    /* positioning it absolute so that it overlaps the background image and so that we can use properties like top,left etc to position it */
+    position: absolute;
+    background-color: white;
+    /* below it means top and bottom padding is 0.5 and left and right padding is 2.5 */
+    padding:0.5rem 2.5rem;
+    top: 50%;
+    left: 50%;
+    /* here the %age is relative to the own size of element(heading) */
+    transform: translateX(-50%) translateY(-50%);
+    color: black;
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+

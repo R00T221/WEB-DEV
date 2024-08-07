@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- linking external fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>PARALLAX-EFFECT!</title>
+    <link rel="stylesheet" href="01-PARALLAX-EFFECT.css">
+</head>
+<body>
+    <!-- CREATING A WRAPPER DIV WHICH CONTAINS ALL WEBSITE CODE -->
+    <div id="wrapper">
+        <!-- Inside the wrapper,creating a header element(id=container) for website which contains 3 elements,a background image,foreground image and a heading(ADVENTURE) -->
+        <header class="container">
+            <!-- background image with class 'background' -->
+     <img src="/assets/background.png" class="background">
+     <!-- foregrund image with class foreground -->
+     <img src="/assets/foreground.png" class="foreground">
+     <!-- heading with class 'hdg' -->
+     <h1 class="hdg">ADVENTURE</h1>
+        </header>
+        <!-- CREATING A SECTION FOR NEXT CONTENT i:e CREATING A NEW SECTION WHICH INCLUDES REST OF THE CONTENT i:e  BACKGROUND IMAGES,PARAGRAPHS AND  HEADINGS(BIKING,PARA-GLIDING ETC).  -->
+        <section>
+            <h2 class="secHDG">Adventure Time!</h2>
+            <!-- The class useed for ist para will be used for all the following paras becoz their styling is same -->
+            <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui necessitatibus commodi alias? Veritatis, eligendi nisi. Amet exercitationem, recusandae dolore corrupti laborum aperiam repellendus natus voluptatem quam atque aliquam beatae. Odit deserunt nisi optio eveniet? Aliquam possimus molestiae, ullam illum accusamus autem accusantium! Voluptate laboriosam eum saepe ex veritatis est? Numquam eaque autem labore provident dolorum, velit omnis mollitia eos adipisci!
+                <br> <br>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, itaque hic tempore rem eveniet sed repudiandae molestiae magnam aut quod consequatur, harum, totam beatae fugiat ipsam? Explicabo, blanditiis quod similique fugiat fugit ea expedita deleniti doloribus, delectus perferendis, tempore amet maiores libero sapiente voluptatem reprehenderit? Illum alias commodi cupiditate corporis mollitia ab quaerat, ipsum est excepturi vitae a sunt optio.
+          </p>
+        
+    <!-- CREATING A DIV WHICH CONTAINS HEADING(BIKING),PARAGRAPH AND BACKGRROUND IMAGE.HERE WE ARE USING MULTIPLE CLASSES FOR SAME ELEMENT(DIV) IN WHICH ONE CLASS WILL BE USED TO ADD BACKGROUND IMAGE AND THE OTHER CLASS WILL BE USED TO STYLE THE ELEMENT.THIS IS DONE BECOZ THE BACKGROUND IMAGES ARE DIFFERENT BUT THEIR STYLING IS SAME.AS THE CONTENT THAT FOLLOWS HAS ONLY IMAGES DIFFERENT AND STYLING SAME,THE SAME STYLING WILL BE APPLIED USING ONE CLASS AND BACKGOUND IMAGES WILL BE ADDED USING ANOTHER CLASS(which will be different in all) -->
+    <div class="bg bg1">
+        <h2 class="desc">BIKING</h2>
+    </div>
+    <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui necessitatibus commodi alias? Veritatis, eligendi nisi. Amet exercitationem, recusandae dolore corrupti laborum aperiam repellendus natus voluptatem quam atque aliquam beatae. Odit deserunt nisi optio eveniet? Aliquam possimus molestiae, ullam illum accusamus autem accusantium! Voluptate laboriosam eum saepe ex veritatis est? Numquam eaque autem labore provident dolorum, velit omnis mollitia eos adipisci!
+        <br> <br>
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, itaque hic tempore rem eveniet sed repudiandae molestiae magnam aut quod consequatur, harum, totam beatae fugiat ipsam? Explicabo, blanditiis quod similique fugiat fugit ea expedita deleniti doloribus, delectus perferendis, tempore amet maiores libero sapiente voluptatem reprehenderit? Illum alias commodi cupiditate corporis mollitia ab quaerat, ipsum est excepturi vitae a sunt optio.
+  </p>
+    <!-- USING DIV TO ADD HEADING(PARA GLIDING),PARA AND A BACKGROUND IMAGE.AGAIN WE WILL USE MULTIPLE CLASSES IN THIS DIV AMONG WHICH THE CLASS(bg)USED FOR STYLING WILL BE SAME AS IN OTHER DIVs AND ANOTHER CLASS(bg2)WILL BE USED TO ADD BACKGROUND IMAGE-->
+    <div class="bg bg2">
+        <h2 class="desc">PARA GLIDING</h2>
+    </div>
+    <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui necessitatibus commodi alias? Veritatis, eligendi nisi. Amet exercitationem, recusandae dolore corrupti laborum aperiam repellendus natus voluptatem quam atque aliquam beatae. Odit deserunt nisi optio eveniet? Aliquam possimus molestiae, ullam illum accusamus autem accusantium! Voluptate laboriosam eum saepe ex veritatis est? Numquam eaque autem labore provident dolorum, velit omnis mollitia eos adipisci!
+        <br> <br>
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, itaque hic tempore rem eveniet sed repudiandae molestiae magnam aut quod consequatur, harum, totam beatae fugiat ipsam? Explicabo, blanditiis quod similique fugiat fugit ea expedita deleniti doloribus, delectus perferendis, tempore amet maiores libero sapiente voluptatem reprehenderit? Illum alias commodi cupiditate corporis mollitia ab quaerat, ipsum est excepturi vitae a sunt optio.
+  </p>
+     <!-- USING DIV TO ADD HEADING(SURFING),PARA AND A BACKGROUND IMAGE.AGAIN WE WILL USE MULTIPLE CLASSES IN THIS DIV AMONG WHICH THE CLASS(bg)USED FOR STYLING WILL BE SAME AS IN OTHER DIVs AND TO ADD BACKGROUND IMG WE USE bg3 CLASS-->
+     <div class="bg bg3">
+        <h2 class="desc">SURFING</h2>
+    </div>
+    <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui necessitatibus commodi alias? Veritatis, eligendi nisi. Amet exercitationem, recusandae dolore corrupti laborum aperiam repellendus natus voluptatem quam atque aliquam beatae. Odit deserunt nisi optio eveniet? Aliquam possimus molestiae, ullam illum accusamus autem accusantium! Voluptate laboriosam eum saepe ex veritatis est? Numquam eaque autem labore provident dolorum, velit omnis mollitia eos adipisci!
+        <br> <br>
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, itaque hic tempore rem eveniet sed repudiandae molestiae magnam aut quod consequatur, harum, totam beatae fugiat ipsam? Explicabo, blanditiis quod similique fugiat fugit ea expedita deleniti doloribus, delectus perferendis, tempore amet maiores libero sapiente voluptatem reprehenderit? Illum alias commodi cupiditate corporis mollitia ab quaerat, ipsum est excepturi vitae a sunt optio.
+  </p>
+</section>
+    </div>
+</body>
+</html>
